@@ -7,7 +7,7 @@ import store from './store';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3000/v1/',
+  baseURL: 'https://jobapi.itsjustmechris.tech/v1/',
 });
 
 new Vue({
