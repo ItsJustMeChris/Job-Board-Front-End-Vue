@@ -10,6 +10,7 @@ export default new Vuex.Store({
     location: undefined,
     user: undefined,
     job_count: undefined,
+    company_count: undefined,
   },
   mutations: {
     mutate(state, { stateId, data }) {
@@ -26,11 +27,15 @@ export default new Vuex.Store({
     setJobCount({ commit }, count) {
       commit('mutate', { stateId: 'job_count', data: count });
     },
+    setCompanyCount({ commit }, count) {
+      commit('mutate', { stateId: 'company_count', data: count });
+    },
   },
   getters: {
     session: state => state.session,
     user: state => state.user,
     jobCount: state => state.job_count,
+    companyCount: state => state.company_count,
   },
   modules: {
   },

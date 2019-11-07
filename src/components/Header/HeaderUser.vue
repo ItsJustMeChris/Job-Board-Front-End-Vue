@@ -7,19 +7,19 @@
       <li class="flex-middle">
         <ul>
           <li>
-            <a href="/jobs">Jobs</a>
+            <router-link to="/jobs">Jobs</router-link>
           </li>
           <li>
-            <a href="/companies">Companies</a>
+            <router-link to="/companies">Companies</router-link>
           </li>
           <li>
-            <a href="/jobs/new">Post a Job</a>
+            <router-link to="/jobs/new">Post a Job</router-link>
           </li>
           <li>
-            <a href="/resumes">Resume Search</a>
+            <router-link to="/resumes">Resume Search</router-link>
           </li>
           <li>
-            <a href="/pricing">Pricing</a>
+            <router-link to="/pricing">Pricing</router-link>
           </li>
         </ul>
       </li>

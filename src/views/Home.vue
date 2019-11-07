@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div id="jobs">
-      <p>Browse over {{jobCount}} Live Jobs</p>
+      <p>Browse over {{jobCount}} Live Jobs from {{companyCount}} companies</p>
       <p id="quote">Your job search, just got better</p>
     </div>
     <div id="search">
@@ -68,14 +68,29 @@ export default {
   name: 'home',
   components: {},
   async beforeMount() {
-    const {
-      data: { count },
-    } = await this.$http.get('jobs/count');
-    this.$store.dispatch('setJobCount', count);
+    this.fetchCompanyCount();
+    this.fetchJobCount();
   },
   computed: {
     jobCount() {
       return this.$store.getters.jobCount;
+    },
+    companyCount() {
+      return this.$store.getters.companyCount;
+    },
+  },
+  methods: {
+    async fetchJobCount() {
+      const {
+        data: { count },
+      } = await this.$http.get('jobs/count');
+      this.$store.dispatch('setJobCount', count);
+    },
+    async fetchCompanyCount() {
+      const {
+        data: { count },
+      } = await this.$http.get('companies/count');
+      this.$store.dispatch('setCompanyCount', count);
     },
   },
 };
