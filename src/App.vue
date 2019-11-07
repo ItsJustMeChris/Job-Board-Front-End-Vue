@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <HeaderGuest />
+    <HeaderGuest v-if="session === undefined" />
+    <HeaderUser v-if="session !== undefined" />
     <router-view />
   </div>
 </template>
 
 <script>
 import HeaderGuest from '@/components/Header/HeaderGuest.vue';
+import HeaderUser from '@/components/Header/HeaderUser.vue';
 
 export default {
   name: 'app',
   components: {
     HeaderGuest,
+    HeaderUser,
+  },
+  computed: {
+    session() {
+      return this.$store.getters.session;
+    },
   },
 };
 </script>

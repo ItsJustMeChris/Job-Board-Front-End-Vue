@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div id="jobs">
-      <p>Browse over 6 Live Jobs</p>
+      <p>Browse over {{jobCount}} Live Jobs</p>
       <p id="quote">Your job search, just got better</p>
     </div>
     <div id="search">
@@ -67,6 +67,17 @@
 export default {
   name: 'home',
   components: {},
+  async beforeMount() {
+    const {
+      data: { count },
+    } = await this.$http.get('jobs/count');
+    this.$store.dispatch('setJobCount', count);
+  },
+  computed: {
+    jobCount() {
+      return this.$store.getters.jobCount;
+    },
+  },
 };
 </script>
 
