@@ -55,7 +55,6 @@ export default {
     },
     async fetchJobs() {
       const { data } = await this.$http.get('jobs/all/0');
-      console.log(data);
       this.$store.dispatch('setJobs', data);
     },
     async fetchCompanyCount() {

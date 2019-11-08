@@ -61,11 +61,9 @@ export default {
         image: this.image,
         token: this.$store.getters.session,
       });
-      if (status === 'error') {
-        return console.log('Error Creating Company', status, message);
+      if (status !== 'error') {
+        return this.$store.dispatch('addUserCompany', data);
       }
-      console.log(data);
-      return this.$store.dispatch('addUserCompany', data);
     },
   },
 };

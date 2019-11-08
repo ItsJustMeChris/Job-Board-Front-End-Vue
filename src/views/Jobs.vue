@@ -55,11 +55,9 @@ export default {
         type: this.type,
         CompanyId: this.CompanyId,
       });
-      if (status === 'error') {
-        return console.log('Error Creating Company', status, message);
+      if (status !== 'error') {
+        return this.$store.dispatch('addUserCompany', data);
       }
-      console.log(data);
-      return this.$store.dispatch('addUserCompany', data);
     },
     async fetchUserCompanies() {
       const { data } = await this.$http.get(
