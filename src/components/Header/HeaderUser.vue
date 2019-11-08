@@ -46,9 +46,7 @@ export default {
 </script>
 
 <style scoped>
-.header {
-  margin: 2em 15em 2em 15em;
-}
+
 ul {
   width: 100%;
   display: flex;

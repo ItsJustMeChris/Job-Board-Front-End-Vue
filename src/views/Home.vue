@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div id="jobs">
-      <p>Browse over {{jobCount}} Live Jobs from {{companyCount}} companies</p>
-      <p id="quote">Your job search, just got better</p>
+      <p class="center-text">Browse over {{jobCount}} Live Jobs from {{companyCount}} companies</p>
+      <p class="center-text" id="quote">Your job search, just got better</p>
     </div>
     <div id="search">
       <input placeholder="Search for a job" id="search-job" type="text" />
@@ -95,11 +95,14 @@ div#jobs {
   place-content: center;
   flex-direction: column;
 }
+.center-text {
+  text-align: center;
+}
 p {
   align-self: center;
   margin: 0 auto;
   color: #fff;
-  font-size: 3em;
+  font-size: 1.6em;
 }
 p#quote {
   font-size: 1em;
@@ -107,24 +110,26 @@ p#quote {
 div#search {
   margin: 0 auto;
   padding: 1em;
-  height: 4em;
   background: #ffffff;
   display: flex;
   justify-content: space-evenly;
   border-radius: 1em;
   box-shadow: 0px 4px 14px 0px #000;
-  margin: -3em 4em 0em 4em;
+  margin: -3em 1em 0em 1em;
 }
 input#search-job {
   border: none;
   border-right: 1px solid #dcdcdc;
-  font-size: 2em;
+  font-size: 1.4em;
   padding: 1em;
 }
 input#search-location {
   border: none;
-  font-size: 2em;
+  font-size: 1.4em;
   padding: 1em;
+}
+input {
+  width: 33%;
 }
 button#search-button {
   border: none;
@@ -154,9 +159,11 @@ div#job-cards {
 
 img.company-logo {
   height: 40px;
+  width: 40px;
   border: 1px solid #f5f5f5;
   border-radius: 1em;
   padding: 0.5em;
+  object-fit: cover;
 }
 
 .company-info {
@@ -202,5 +209,26 @@ span.tag.intern {
 span.posted {
   color: #a7a7a7;
   font-size: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+  div#search {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  input#search-job {
+    border: none;
+  }
+  input {
+    width: 80%;
+  }
+  div#job-cards {
+    width: 100%;
+  }
+  .company-info {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="jobs">
-    <div v-if="isCreating">
+    <div v-if="isCreating && $store.getters.session !== undefined">
       <input placeholder="title" v-model="title" type="text" />
       <input placeholder="description" v-model="description" type="text" />
       <input placeholder="location" v-model="location" type="text" />
@@ -38,6 +38,9 @@ export default {
     userCompanies() {
       return this.$store.getters.userCompanies;
     },
+  },
+  beforeCreate() {
+    if (!this.$store.getters.session) this.$router.push('/login');
   },
   async beforeMount() {
     if (this.$store.getters.session) this.fetchUserCompanies();
