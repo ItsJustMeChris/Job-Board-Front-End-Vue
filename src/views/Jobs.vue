@@ -58,6 +58,7 @@ export default {
       if (status !== 'error') {
         return this.$store.dispatch('addUserCompany', data);
       }
+      return false;
     },
     async fetchUserCompanies() {
       const { data } = await this.$http.get(

@@ -64,6 +64,7 @@ export default {
       if (status !== 'error') {
         return this.$store.dispatch('addUserCompany', data);
       }
+      return false;
     },
   },
 };
