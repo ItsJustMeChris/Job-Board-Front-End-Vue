@@ -54,7 +54,7 @@ export default {
     async addCompany() {
       const {
         data,
-        data: { status, message },
+        data: { status },
       } = await this.$http.post('company/new', {
         name: this.name,
         description: this.description,

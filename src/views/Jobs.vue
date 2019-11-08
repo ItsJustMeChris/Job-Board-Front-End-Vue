@@ -46,7 +46,7 @@ export default {
     async createJob() {
       const {
         data,
-        data: { status, message },
+        data: { status },
       } = await this.$http.post('job/new', {
         title: this.title,
         token: this.$store.getters.session,
