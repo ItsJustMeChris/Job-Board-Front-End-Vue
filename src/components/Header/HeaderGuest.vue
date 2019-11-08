@@ -2,7 +2,7 @@
   <div class="header">
     <ul>
       <li class="flex-left">
-        <router-link to="/">Company Logo</router-link>
+        <router-link to="/">Flin</router-link>
       </li>
       <li class="flex-middle">
         <ul>

@@ -10,53 +10,20 @@
       <button id="search-button">Search</button>
     </div>
     <div id="job-cards">
-      <div class="job-card">
+      <div v-for="(job, index) in jobs" v-bind:key="index" class="job-card">
         <img
           class="company-logo"
           src="https://www.stickpng.com/assets/images/58482acecef1014c0b5e4a1e.png"
           alt
         />
         <div class="company-info">
-          <p class="job-title">VueJS Developer</p>
-          <span class="company-name">Company</span>
-          <span class="company-location">Boston</span>
+          <p class="job-title">{{job.title}}</p>
+          <span class="company-name">{{job.Company.name}}</span>
+          <span class="company-location">{{job.location}}</span>
         </div>
         <div class="listing-info">
-          <span class="tag fulltime">Full Time</span>
-          <span class="posted">October 26, 2019</span>
-        </div>
-      </div>
-      <div class="job-card">
-        <img
-          class="company-logo"
-          src="https://www.stickpng.com/assets/images/58482acecef1014c0b5e4a1e.png"
-          alt
-        />
-        <div class="company-info">
-          <p class="job-title">VueJS Developer</p>
-          <span class="company-name">Company</span>
-          <span class="company-location">Boston</span>
-        </div>
-        <div class="listing-info">
-          <span class="tag parttime">Part Time</span>
-          <span class="posted">October 26, 2019</span>
-        </div>
-      </div>
-
-      <div class="job-card">
-        <img
-          class="company-logo"
-          src="https://www.stickpng.com/assets/images/58482acecef1014c0b5e4a1e.png"
-          alt
-        />
-        <div class="company-info">
-          <p class="job-title">VueJS Developer</p>
-          <span class="company-name">Company</span>
-          <span class="company-location">Boston</span>
-        </div>
-        <div class="listing-info">
-          <span class="tag intern">Intern</span>
-          <span class="posted">October 26, 2019</span>
+          <span class="tag parttime">{{job.type}}</span>
+          <span class="posted">{{stampToPrettyDate(job.createdAt)}}</span>
         </div>
       </div>
     </div>
@@ -70,6 +37,7 @@ export default {
   async beforeMount() {
     this.fetchCompanyCount();
     this.fetchJobCount();
+    this.fetchJobs();
   },
   computed: {
     jobCount() {
@@ -77,6 +45,9 @@ export default {
     },
     companyCount() {
       return this.$store.getters.companyCount;
+    },
+    jobs() {
+      return this.$store.getters.jobs;
     },
   },
   methods: {
@@ -86,11 +57,35 @@ export default {
       } = await this.$http.get('jobs/count');
       this.$store.dispatch('setJobCount', count);
     },
+    async fetchJobs() {
+      const { data } = await this.$http.get('jobs/all/0');
+      console.log(data);
+      this.$store.dispatch('setJobs', data);
+    },
     async fetchCompanyCount() {
       const {
         data: { count },
       } = await this.$http.get('companies/count');
       this.$store.dispatch('setCompanyCount', count);
+    },
+    stampToPrettyDate(date) {
+      const monthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+
+      const d = new Date(date);
+      return `${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
     },
   },
 };
