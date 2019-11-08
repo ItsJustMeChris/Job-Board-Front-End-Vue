@@ -11,11 +11,7 @@
     </div>
     <div id="job-cards">
       <div v-for="(job, index) in jobs" v-bind:key="index" class="job-card">
-        <img
-          class="company-logo"
-          src="https://www.stickpng.com/assets/images/58482acecef1014c0b5e4a1e.png"
-          alt
-        />
+        <img class="company-logo" :src="job.Company.image" alt />
         <div class="company-info">
           <p class="job-title">{{job.title}}</p>
           <span class="company-name">{{job.Company.name}}</span>

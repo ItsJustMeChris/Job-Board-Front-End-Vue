@@ -1,9 +1,9 @@
 <template>
   <div class="jobs">
     <div v-if="isCreating">
-      <input v-model="title" type="text" />
-      <input v-model="description" type="text" />
-      <input v-model="location" type="text" />
+      <input placeholder="title" v-model="title" type="text" />
+      <input placeholder="description" v-model="description" type="text" />
+      <input placeholder="location" v-model="location" type="text" />
       <select v-model="CompanyId">
         <option disabled value>Please select one</option>
         <option
@@ -12,7 +12,7 @@
           v-bind:value="company.id"
         >{{company.name}}</option>
       </select>
-      <input v-model="type" type="text" />
+      <input placeholder="type" v-model="type" type="text" />
       <button @click="createJob">Post Job</button>
     </div>
   </div>

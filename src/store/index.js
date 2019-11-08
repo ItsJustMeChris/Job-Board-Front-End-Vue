@@ -45,7 +45,7 @@ export default new Vuex.Store({
       commit('mutate', { stateId: 'user_companies', data: companies });
     },
     addUserCompany({ commit }, company) {
-      commit('mutate', { stateId: 'companies', data: [...this.getters.userCompanies, company] });
+      commit('mutate', { stateId: 'user_companies', data: [...this.getters.userCompanies, company] });
     },
   },
   getters: {

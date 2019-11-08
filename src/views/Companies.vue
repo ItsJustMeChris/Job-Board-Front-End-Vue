@@ -1,25 +1,31 @@
 <template>
-  <div class="companies">
-    <div v-for="(company, index) in companies" v-bind:key="index">
-      <p>{{company.name}}</p>
+  <div>
+    <div v-if="$store.getters.session">
+      <input v-model="name" placeholder="Company Name" type="text" />
+      <input v-model="description" placeholder="Company Description" type="text" />
+      <input v-model="image" placeholder="Company Image URL" type="text" />
+      <button @click="addCompany">Add Company</button>
     </div>
-    <p>Users Companies</p>
-    <div v-for="(company, index) in userCompanies" v-bind:key="index">
-      <p>{{company.name}}</p>
+    <div class="companies">
+      <CompanyCard v-for="(company, index) in companies" v-bind:key="index" :company="company" />
     </div>
-    <input v-model="name" type="text" />
-    <button @click="addCompany">Add Company</button>
   </div>
 </template>
 
 <script>
+import CompanyCard from '@/components/Company/Card.vue';
+
 export default {
   name: 'companies',
-  components: {},
+  components: {
+    CompanyCard,
+  },
   props: {},
   data() {
     return {
       name: '',
+      description: '',
+      image: '',
     };
   },
   computed: {
@@ -51,9 +57,14 @@ export default {
         data: { status, message },
       } = await this.$http.post('company/new', {
         name: this.name,
+        description: this.description,
+        image: this.image,
         token: this.$store.getters.session,
       });
-      if (status === 'error') return console.log('Error Creating Company', status, message);
+      if (status === 'error') {
+        return console.log('Error Creating Company', status, message);
+      }
+      console.log(data);
       return this.$store.dispatch('addUserCompany', data);
     },
   },
@@ -61,4 +72,11 @@ export default {
 </script>
 
 <style scoped>
+.companies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1 33%;
+  justify-content: space-between;
+}
 </style>
