@@ -214,6 +214,7 @@ span.posted {
   #search input {
     margin-right: 0;
     margin-bottom: 0.5em;
+      font-size: 1.4em;
   }
   #search button {
     width: 100%;
