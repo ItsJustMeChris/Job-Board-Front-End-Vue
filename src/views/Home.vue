@@ -3,13 +3,14 @@
     <div id="jobs">
       <p class="center-text">Browse over {{jobCount}} Live Jobs from {{companyCount}} companies</p>
       <p class="center-text" id="quote">Your job search, just got better</p>
-    </div>
-    <div id="search">
-      <input placeholder="Search for a job" id="search-job" type="text" />
-      <input placeholder="Location" id="search-location" type="text" />
-      <button id="search-button">Search</button>
+      <div id="search">
+        <input placeholder="Search for a job" id="search-job" type="text" />
+        <input placeholder="Location" id="search-location" type="text" />
+        <button id="search-button">Search</button>
+      </div>
     </div>
     <div id="job-cards">
+      <h1>Newest Jobs</h1>
       <div v-for="(job, index) in jobs" v-bind:key="index" class="job-card">
         <img class="company-logo" :src="job.Company.image" alt />
         <div class="company-info">
@@ -18,7 +19,7 @@
           <span class="company-location">{{job.location}}</span>
         </div>
         <div class="listing-info">
-          <span class="tag parttime">{{job.type}}</span>
+          <span class="tag">{{job.type}}</span>
           <span class="posted">{{stampToPrettyDate(job.createdAt)}}</span>
         </div>
       </div>
@@ -88,57 +89,26 @@ export default {
 
 <style scoped>
 div#jobs {
+  margin-top: 1em;
   height: 300px;
-  background: linear-gradient(45deg, #0072ff, #00adff);
   display: flex;
   border-radius: 1em;
   place-content: center;
   flex-direction: column;
+  background: #fff url('../assets/map.png');
+  background-size: cover;
+  align-items: center;
 }
 .center-text {
   text-align: center;
 }
 p {
-  align-self: center;
   margin: 0 auto;
-  color: #fff;
+  color: #000;
   font-size: 1.6em;
 }
 p#quote {
   font-size: 1em;
-}
-div#search {
-  margin: 0 auto;
-  padding: 1em;
-  background: #ffffff;
-  display: flex;
-  justify-content: space-evenly;
-  border-radius: 1em;
-  box-shadow: 0px 4px 14px 0px #000;
-  margin: -3em 1em 0em 1em;
-}
-input#search-job {
-  border: none;
-  border-right: 1px solid #dcdcdc;
-  font-size: 1.4em;
-  padding: 1em;
-}
-input#search-location {
-  border: none;
-  font-size: 1.4em;
-  padding: 1em;
-}
-input {
-  width: 33%;
-}
-button#search-button {
-  border: none;
-  background: #0072ff;
-  width: 6em;
-  font-size: 1.2em;
-  border-radius: 1em;
-  color: #fff;
-  margin-left: 1em;
 }
 
 div#job-cards {
@@ -169,7 +139,27 @@ img.company-logo {
 .company-info {
   width: 75%;
 }
-
+div#search {
+  margin: 1em;
+  display: flex;
+  justify-self: center;
+  width: fit-content;
+}
+#search input {
+  border: 3px solid var(--primary-fade);
+  padding: 0.2em;
+  height: 2em;
+  border-radius: 0.2em;
+  margin-right: 1em;
+}
+#search button {
+  border: none;
+  background: var(--primary-green);
+  color: var(--primary-white);
+  width: 10em;
+  font-weight: 900;
+  border-radius: 0.2em;
+}
 p.job-title {
   color: #696969;
   font-size: 2em;
@@ -187,18 +177,12 @@ span.company-location {
 }
 span.tag {
   padding: 0.5em;
-  border-radius: 1em;
+  border-radius: 0.2em;
   text-align: center;
   font-weight: bold;
-}
-span.tag.fulltime {
-  background: #94ffe1;
-}
-span.tag.parttime {
+  color: #ffffff;
   background: #94f3ff;
-}
-span.tag.intern {
-  background: #ffd494;
+  max-width: 7em;
 }
 .listing-info {
   display: flex;
@@ -211,24 +195,29 @@ span.posted {
   font-size: 1em;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
   div#search {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
   }
-  input#search-job {
-    border: none;
-  }
-  input {
-    width: 80%;
-  }
   div#job-cards {
-    width: 100%;
+    width: 90%;
   }
   .company-info {
     display: flex;
     flex-direction: column;
+  }
+  #search {
+    flex-direction: row;
+  }
+  #search input {
+    margin-right: 0;
+    margin-bottom: 0.5em;
+  }
+  #search button {
+    width: 100%;
+    height: 3em;
   }
 }
 </style>

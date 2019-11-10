@@ -1,9 +1,7 @@
 <template>
   <div class="header">
     <ul>
-      <li class="flex-left">
-        <router-link to="/">Flin</router-link>
-      </li>
+      <router-link class="flex-left" to="/">Flin</router-link>
       <li class="flex-middle">
         <ul>
           <li>
@@ -33,6 +31,9 @@
           </li>
         </ul>
       </li>
+      <div class="flex-right menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
     </ul>
   </div>
 </template>
@@ -44,15 +45,19 @@ export default {
 </script>
 
 <style scoped>
-
+.header {
+  border-bottom: 2px solid #eee;
+  padding-left: 5em;
+  padding-right: 5em;
+}
 ul {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   width: 100%;
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
@@ -66,5 +71,18 @@ li {
 a {
   text-decoration: none;
   color: #404040;
+}
+.menu-icon {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .header ul li {
+    display: none;
+  }
+  .menu-icon {
+    display: inline-block;
+  }
+
 }
 </style>
