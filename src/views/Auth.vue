@@ -50,15 +50,15 @@ button.panel-button {
   width: 50%;
 }
 button {
-  background: #e2e2e2;
+  background: var(--primary-fade);
   border: none;
   font-weight: 600;
-  color: #949494;
+  color: var(--primary-color);
   padding: 1em;
 }
 
 button.active {
   color: #ffffff;
-  background: #518fff;
+  background: var(--primary-color);
 }
 </style>

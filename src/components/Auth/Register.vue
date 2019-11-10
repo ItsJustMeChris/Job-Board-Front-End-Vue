@@ -72,7 +72,7 @@ export default {
 input {
   display: block;
   font-size: 1.4em;
-  border: 1px solid #dddddd;
+  border: 1px solid var(--primary-fade);
   padding: 0.2em;
   border-radius: 0.2em;
 }
@@ -81,25 +81,25 @@ div#panel-content {
   flex-direction: column;
 }
 button {
-  background: #e2e2e2;
+  background: var(--primary-fade);
   border: none;
   font-weight: 600;
-  color: #949494;
+  color: var(--secondar-color);
   padding: 1em;
   width: 100%;
   margin-top: 1em;
 }
 button.active {
   color: #ffffff;
-  background: #518fff;
+  background: var(--primary-green);
 }
 input.match {
-  border: 1px solid #00a97a;
-  color: #00a97a;
+  border: 1px solid var(--primary-green);
+  color: var(--primary-green);
 }
 
 input.nomatch {
-  color: #a20000;
-  border: 1px solid #a20000;
+  color: var(--secondary-red);
+  border: 1px solid var(--secondary-red);
 }
 </style>
