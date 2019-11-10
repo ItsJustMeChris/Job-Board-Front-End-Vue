@@ -195,6 +195,13 @@ span.posted {
   font-size: 1em;
 }
 
+h1::after {
+  content: '';
+  width: 2em;
+  display: block;
+  border-bottom: 3px solid var(--primary-green);
+}
+
 @media only screen and (max-width: 900px) {
   div#search {
     flex-direction: column;
@@ -214,7 +221,7 @@ span.posted {
   #search input {
     margin-right: 0;
     margin-bottom: 0.5em;
-      font-size: 1.4em;
+    font-size: 1.4em;
   }
   #search button {
     width: 100%;
