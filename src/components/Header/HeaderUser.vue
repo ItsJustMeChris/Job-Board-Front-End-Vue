@@ -59,11 +59,16 @@
 
 <script>
 export default {
-  name: 'HeaderGuest',
+  name: 'HeaderUser',
   data() {
     return {
       mobileMenu: false,
     };
+  },
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
   },
 };
 </script>
