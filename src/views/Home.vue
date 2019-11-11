@@ -146,11 +146,12 @@ div#search {
   width: fit-content;
 }
 #search input {
-  border: 3px solid var(--primary-fade);
+  display: block;
+  font-size: 1.4em;
+  border: 1px solid var(--primary-fade);
   padding: 0.2em;
-  height: 2em;
   border-radius: 0.2em;
-  margin-right: 1em;
+  margin-right: 0.2em;
 }
 #search button {
   border: none;

@@ -1,6 +1,6 @@
 <template>
   <div class="jobs">
-    <div v-if="isCreating && $store.getters.session !== undefined">
+    <div v-if="isCreating && userCompanies[0] && $store.getters.session !== undefined">
       <input placeholder="title" v-model="title" type="text" />
       <input placeholder="description" v-model="description" type="text" />
       <input placeholder="location" v-model="location" type="text" />
