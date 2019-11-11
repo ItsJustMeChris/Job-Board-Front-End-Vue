@@ -132,6 +132,8 @@ ul#mobile-nav {
   padding-left: 2em;
   padding-top: 3vh;
   z-index: 9999;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
   animation: slide 0.5s forwards;
 }
 
@@ -150,6 +152,8 @@ ul#mobile-nav li a {
 @keyframes slide {
   100% {
     right: 0px;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
   }
 }
 
