@@ -11,12 +11,6 @@
             <router-link to="/companies">Companies</router-link>
           </li>
           <li>
-            <router-link to="/jobs/new">Post a Job</router-link>
-          </li>
-          <li>
-            <router-link to="/resumes">Resume Search</router-link>
-          </li>
-          <li>
             <router-link to="/pricing">Pricing</router-link>
           </li>
         </ul>
@@ -42,12 +36,6 @@
       </li>
       <li @click="mobileMenu = false;">
         <router-link to="/companies">Companies</router-link>
-      </li>
-      <li @click="mobileMenu = false;">
-        <router-link to="/jobs/new">Post a Job</router-link>
-      </li>
-      <li @click="mobileMenu = false;">
-        <router-link to="/resumes">Resume Search</router-link>
       </li>
       <li @click="mobileMenu = false;">
         <router-link to="/pricing">Pricing</router-link>
